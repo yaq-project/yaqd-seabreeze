@@ -31,18 +31,11 @@ before_script:
   - pip install -U twine
   - pip install -U mypy
   - pip install -U yaqd_core
-  - pip install -U pytest
     
 mypy:
   stage: test
   script:
     - mypy yaqd_seabreeze
-
-
-pytest:
-  stage: test
-  script:
-    - pytest
 
 
 run:
