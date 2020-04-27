@@ -3,7 +3,7 @@ __all__ = ["Seabreeze"]
 import asyncio
 from typing import Dict, Any, List
 
-from seabreeze.spectrometers import Spectrometer
+from seabreeze.spectrometers import Spectrometer  # type: ignore
 from yaqd_core import Sensor, logging
 
 logger = logging.getLogger(__name__)
@@ -25,8 +25,10 @@ class Seabreeze(Sensor):
 
         self.channel_names = ["wavelengths", "intensities"]
         self.channel_units = {"wavelengths": "nm", "intensities": None}
-        self.channel_shapes = {"wavelengths": (self.spec.pixels,), "intensities": (self.spec.pixels,)}
-
+        self.channel_shapes = {
+            "wavelengths": (self.spec.pixels,),
+            "intensities": (self.spec.pixels,),
+        }
 
     def _load_state(self, state):
         """Load an initial state from a dictionary (typically read from the state.toml file).
@@ -48,9 +50,11 @@ class Seabreeze(Sensor):
 
     async def _measure(self):
         return {
-                "wavelengths": self.spec.wavelengths(),
-                "intensities": self.spec.intensities(self._correct_dark_counts, self._correct_nonlinearity),
-                }
+            "wavelengths": self.spec.wavelengths(),
+            "intensities": self.spec.intensities(
+                self._correct_dark_counts, self._correct_nonlinearity
+            ),
+        }
 
     def set_integration_time_micros(self, micros: int) -> None:
         """Set the integration time in microseconds"""
@@ -59,4 +63,3 @@ class Seabreeze(Sensor):
     def get_integration_time_micros(self) -> int:
         """Get the integration time in microseconds"""
         return self._integration_time_micros
-
