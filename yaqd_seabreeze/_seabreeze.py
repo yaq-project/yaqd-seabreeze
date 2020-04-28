@@ -7,7 +7,7 @@ from seabreeze.spectrometers import Spectrometer  # type: ignore
 from yaqd_core import Sensor, logging
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 
 
 class Seabreeze(Sensor):
@@ -16,10 +16,10 @@ class Seabreeze(Sensor):
     defaults: Dict[str, Any] = {}
 
     def __init__(self, name, config, config_filepath):
-        super().__init__(name, config, config_filepath)
-        # Perform any unique initialization
-
         self.spec = Spectrometer.from_serial_number(config.get("serial"))
+
+        super().__init__(name, config, config_filepath)
+
         self._correct_dark_counts = config.get("correct_dark_counts", False)
         self._correct_nonlinearity = config.get("correct_nonlinearity", False)
 
@@ -41,7 +41,8 @@ class Seabreeze(Sensor):
             The saved state to load.
         """
         super()._load_state(state)
-        self._integration_time_micros = state.get("integration_time_micros", 0)
+        self._integration_time_micros = state.get("integration_time_micros", 3000)
+        self.spec.integration_time_micros(self._integration_time_micros)
 
     def get_state(self):
         state = super().get_state()
@@ -59,6 +60,7 @@ class Seabreeze(Sensor):
     def set_integration_time_micros(self, micros: int) -> None:
         """Set the integration time in microseconds"""
         self._integration_time_micros = micros
+        self.spec.integration_time_micros(micros)
 
     def get_integration_time_micros(self) -> int:
         """Get the integration time in microseconds"""
