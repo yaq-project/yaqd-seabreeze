@@ -6,9 +6,12 @@ from typing import Dict, Any, List
 from seabreeze.spectrometers import Spectrometer  # type: ignore
 from yaqd_core import Sensor, logging
 
+from .__version__ import __branch__
+
 
 class Seabreeze(Sensor):
     _kind = "seabreeze"
+    _version = "0.1.0" + f"+{__branch__}" if __branch__ else ""
     traits: List[str] = ["is-sensor"]
     defaults: Dict[str, Any] = {}
 
