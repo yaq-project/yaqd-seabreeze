@@ -6,9 +6,6 @@ from typing import Dict, Any, List
 from seabreeze.spectrometers import Spectrometer  # type: ignore
 from yaqd_core import Sensor, logging
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
-
 
 class Seabreeze(Sensor):
     _kind = "seabreeze"
