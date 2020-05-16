@@ -15,7 +15,7 @@ with open("README.md") as readme_file:
     readme = readme_file.read()
 
 
-requirements = ["yaqd-core", "seabreeze", "pyusb", "numpy"]
+requirements = ["yaqd-core>=2020.05.1", "seabreeze", "pyusb", "numpy"]
 
 extra_requirements = {"dev": ["black", "pre-commit"]}
 extra_files = {"yaqd_seabreeze": ["VERSION"]}
@@ -36,9 +36,7 @@ setup(
     ],
     description="yaq daemons for Ocean Optics SeaBreeze spectrometers.",
     entry_points={
-        "console_scripts": [
-            "yaqd-seabreeze=yaqd_seabreeze._seabreeze:Seabreeze.main",
-        ],
+        "console_scripts": ["yaqd-seabreeze=yaqd_seabreeze._seabreeze:Seabreeze.main",],
     },
     install_requires=requirements,
     extras_require=extra_requirements,
