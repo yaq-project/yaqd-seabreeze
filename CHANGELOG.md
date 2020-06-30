@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Changed
+- Update to avro-backed yaqd-core [YEP-107](https://yeps.yaq.fyi/107)
+- Update to flit for packaging
+
 ## [2020.05.0]
 
 ### Added

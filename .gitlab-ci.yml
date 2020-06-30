@@ -21,7 +21,8 @@ before_script:
   - pip install -U pyusb
   - pip install -U seabreeze
   - pip install -U numpy
-  - pip install -e .
+  - pip install -U yaq-traits
+  - pip install .
 
 # test stage
 mypy:
@@ -33,13 +34,16 @@ entry:
   script:
     - yaqd-seabreeze --version
     - yaqd-seabreeze -h
+traits:
+  stage: test
+  script:
+    - yaq-traits check yaqd_seabreeze/seabreeze.avpr
 
 # deploy stage
 twine:
   stage: deploy
   script:
-    - python setup.py sdist bdist_wheel
-    - twine upload dist/*
+    - flit publish
   artifacts:
     paths:
       - dist/*
