@@ -1,7 +1,6 @@
 protocol = "seabreeze"
 doc = "Sensor daemon for Ocean Optics SeaBreeze spectrometers."
-traits = ["is-sensor", "is-daemon"]
-version = "0.2.0"
+traits = ["has-measure-trigger", "is-sensor", "is-daemon"]
 
 [links]
 source = "https://gitlab.com/yaq/yaqd-seabreeze"
