@@ -4,6 +4,7 @@ build-backend = "flit_core.buildapi"
 
 [tool.flit.metadata]
 module = "yaqd_seabreeze"
+dist-name = "yaqd-seabreeze"
 author = "yaq Developers"
 author-email = "blaise@untzag.com"
 home-page = "https://yaq.fyi"
