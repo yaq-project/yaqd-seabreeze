@@ -40,6 +40,9 @@
         }
     },
     "doc": "Sensor daemon for Ocean Optics SeaBreeze spectrometers.",
+    "hardware": [
+        "ocean-insight:usb2000"
+    ],
     "installation": {
         "PyPI": "https://pypi.org/project/yaqd-seabreeze"
     },
@@ -175,9 +178,9 @@
     },
     "trait": "is-sensor",
     "traits": [
-        "is-daemon",
+        "has-measure-trigger",
         "is-sensor",
-        "has-measure-trigger"
+        "is-daemon"
     ],
     "types": [
         {
