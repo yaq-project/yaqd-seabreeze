@@ -10,6 +10,7 @@ manufacturer = "https://www.oceaninsight.com/products/spectrometers/"
 
 [installation]
 PyPI = "https://pypi.org/project/yaqd-seabreeze"
+conda-forge = "https://anaconda.org/conda-forge/yaqd-seabreeze"
 
 [config]
 correct_dark_counts.type = "boolean"
@@ -26,7 +27,7 @@ integration_time_micros.doc = "Integration time for collecting pixels"
 
 [messages.set_integration_time_micros]
 request = [{"name"="set_integration_time_micros", "type"="int"}]
-doc = "Set the integration time in microseconds." 
+doc = "Set the integration time in microseconds."
 
 [messages.get_integration_time_micros]
 response = "int"
