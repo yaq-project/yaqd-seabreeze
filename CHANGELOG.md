@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [2020.12.0]
+
 ### Added
 - conda-forge as installation source
 
@@ -22,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 ### Added
 - initial release
 
-[Unreleased]: https://gitlab.com/yaq/yaqd-seabreeze/-/compare/v2020.07.0...master
+[Unreleased]: https://gitlab.com/yaq/yaqd-seabreeze/-/compare/v2020.12.0...master
+[2020.12.0]: https://gitlab.com/yaq/yaqd-seabreeze/-/compare/v2020.07.0...v2020.12.0
 [2020.07.0]: https://gitlab.com/yaq/yaqd-seabreeze/-/compare/v2020.05.0...v2020.07.0
 [2020.05.0]: https://gitlab.com/yaq/yaqd-seabreeze/-/tags/v2020.05.0
