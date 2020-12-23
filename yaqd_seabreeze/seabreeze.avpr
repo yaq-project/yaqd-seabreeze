@@ -50,7 +50,8 @@
         "ocean-insight:usb2000"
     ],
     "installation": {
-        "PyPI": "https://pypi.org/project/yaqd-seabreeze"
+        "PyPI": "https://pypi.org/project/yaqd-seabreeze",
+        "conda-forge": "https://anaconda.org/conda-forge/yaqd-seabreeze"
     },
     "links": {
         "bugtracker": "https://gitlab.com/yaq/yaqd-seabreeze/-/issues",
@@ -195,9 +196,9 @@
         }
     },
     "traits": [
-        "is-sensor",
+        "has-measure-trigger",
         "is-daemon",
-        "has-measure-trigger"
+        "is-sensor"
     ],
     "types": [
         {
