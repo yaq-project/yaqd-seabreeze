@@ -46,6 +46,19 @@
         }
     },
     "doc": "Sensor daemon for Ocean Optics SeaBreeze spectrometers.",
+    "fields": {
+        "integration_time_micros": {
+            "fields": {
+                "dyanmic": true,
+                "getter": "get_integration_time_micros",
+                "kind": "hinted",
+                "setter": "set_integration_time_micros",
+                "type": "int"
+            },
+            "name": "field",
+            "type": "record"
+        }
+    },
     "hardware": [
         "ocean-insight:usb2000"
     ],
@@ -196,9 +209,9 @@
         }
     },
     "traits": [
-        "has-measure-trigger",
         "is-daemon",
-        "is-sensor"
+        "is-sensor",
+        "has-measure-trigger"
     ],
     "types": [
         {

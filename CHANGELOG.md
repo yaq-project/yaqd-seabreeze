@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Added
+- new field: integration_time_micros [YEP-111](https://yeps.yaq.fyi/111)
+
 ## [2020.12.0]
 
 ### Added
