@@ -23,7 +23,7 @@ integration_time_micros.type = "int"
 integration_time_micros.default = 3000
 integration_time_micros.doc = "Integration time for collecting pixels"
 
-[messages]  # optional
+[messages]
 
 [messages.set_integration_time_micros]
 request = [{"name"="set_integration_time_micros", "type"="int"}]
@@ -33,4 +33,9 @@ doc = "Set the integration time in microseconds."
 response = "int"
 doc = "Get the integration time in microseconds."
 
+[fields]
 
+[fields.integration_time_micros]
+type = "record"
+name = "field"
+fields = {"getter"="get_integration_time_micros", "setter"="set_integration_time_micros", "dyanmic"=true, "kind"="normal", "type"="int"}
