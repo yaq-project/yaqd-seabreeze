@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [2021.2.0]
+
 ### Added
 - new field: integration_time_micros [YEP-111](https://yeps.yaq.fyi/111)
 
@@ -30,7 +32,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 ### Added
 - initial release
 
-[Unreleased]: https://gitlab.com/yaq/yaqd-seabreeze/-/compare/v2020.12.0...master
+[Unreleased]: https://gitlab.com/yaq/yaqd-seabreeze/-/compare/v2021.2.0...master
+[2021.2.0]: https://gitlab.com/yaq/yaqd-seabreeze/-/compare/v2020.12.0...v2021.2.0
 [2020.12.0]: https://gitlab.com/yaq/yaqd-seabreeze/-/compare/v2020.07.0...v2020.12.0
 [2020.07.0]: https://gitlab.com/yaq/yaqd-seabreeze/-/compare/v2020.05.0...v2020.07.0
 [2020.05.0]: https://gitlab.com/yaq/yaqd-seabreeze/-/tags/v2020.05.0
