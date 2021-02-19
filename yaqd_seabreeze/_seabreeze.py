@@ -18,13 +18,14 @@ class Seabreeze(HasMapping, HasMeasureTrigger, IsSensor, IsDaemon):
         self._correct_dark_counts = config.get("correct_dark_counts", False)
         self._correct_nonlinearity = config.get("correct_nonlinearity", False)
 
-        self._channel_names = ["wavelengths", "intensities"]
+        self._channel_names = ["intensities"]
         self._channel_units = {"wavelengths": "nm", "intensities": None}
         self._channel_shapes = {"wavelengths": (self.spec.pixels,)}
         self._channel_mappings = {"intensities": ["wavelengths"]}
         self._mappings["wavelengths"] = self.spec.wavelengths()
 
-        self.set_integration_time_micros(self._state["integration_time_micros"])
+        if self._state["integration_time_micros"]:
+            self.set_integration_time_micros(self._state["integration_time_micros"])
 
     async def _measure(self):
         out = {}
@@ -35,9 +36,9 @@ class Seabreeze(HasMapping, HasMeasureTrigger, IsSensor, IsDaemon):
 
     def set_integration_time_micros(self, micros: int) -> None:
         """Set the integration time in microseconds"""
-        self._integration_time_micros = micros
+        self._state["integration_time_micros"] = micros
         self.spec.integration_time_micros(micros)
 
     def get_integration_time_micros(self) -> int:
         """Get the integration time in microseconds"""
-        return self._integration_time_micros
+        return self._state["integration_time_micros"]
