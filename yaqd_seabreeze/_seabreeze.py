@@ -4,10 +4,10 @@ import asyncio
 from typing import Dict, Any, List
 
 from seabreeze.spectrometers import Spectrometer  # type: ignore
-from yaqd_core import Sensor, logging
+from yaqd_core import HasMapping, HasMeasureTrigger, IsSensor, IsDaemon
 
 
-class Seabreeze(Sensor):
+class Seabreeze(HasMapping, HasMeasureTrigger, IsSensor, IsDaemon):
     _kind = "seabreeze"
 
     def __init__(self, name, config, config_filepath):
@@ -20,20 +20,18 @@ class Seabreeze(Sensor):
 
         self._channel_names = ["wavelengths", "intensities"]
         self._channel_units = {"wavelengths": "nm", "intensities": None}
-        self._channel_shapes = {
-            "wavelengths": (self.spec.pixels,),
-            "intensities": (self.spec.pixels,),
-        }
+        self._channel_shapes = {"wavelengths": (self.spec.pixels,)}
+        self._channel_mappings = {"intensities": ["wavelengths"]}
+        self._mappings["wavelengths"] = self.spec.wavelengths()
 
         self.set_integration_time_micros(self._state["integration_time_micros"])
 
     async def _measure(self):
-        return {
-            "wavelengths": self.spec.wavelengths(),
-            "intensities": self.spec.intensities(
-                self._correct_dark_counts, self._correct_nonlinearity
-            ),
-        }
+        out = {}
+        out["intensities"] = self.spec.intensities(
+            self._correct_dark_counts, self._correct_nonlinearity
+        )
+        return out
 
     def set_integration_time_micros(self, micros: int) -> None:
         """Set the integration time in microseconds"""
