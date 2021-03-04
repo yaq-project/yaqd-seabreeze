@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Added
+- document support for USB4000 spectrometer
+
 ### Fixed
 - added forgotten config options to is-daemon: enable, log_level, and log_to_file
 
