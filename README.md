@@ -7,7 +7,8 @@
 [![ver](https://img.shields.io/badge/calver-YYYY.M.MICRO-blue)](https://calver.org/)
 [![log](https://img.shields.io/badge/change-log-informational)](https://gitlab.com/yaq/yaqd-seabreeze/-/blob/master/CHANGELOG.md)
 
-yaq daemons for Ocean Optics SeaBreeze spectrometers
+yaq daemons for Ocean Optics SeaBreeze spectrometers.
+A simple wrapper of the excelent [python-seabreeze package](https://github.com/ap--/python-seabreeze).
 
 This package contains the following daemon(s):
 - [seabreeze](https://yaq.fyi/daemons/seabreeze/)
