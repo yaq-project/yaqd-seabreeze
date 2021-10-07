@@ -33,9 +33,21 @@ doc = "Set the integration time in microseconds."
 response = "int"
 doc = "Get the integration time in microseconds."
 
-[fields]
+[messages.get_integration_time_units]
+response = "string"
+doc = "Get units of integration time (us)"
 
-[fields.integration_time_micros]
-type = "record"
-name = "field"
-fields = {"getter"="get_integration_time_micros", "setter"="set_integration_time_micros", "dyanmic"=true, "kind"="normal", "type"="int"}
+[messages.get_integration_time_limits]
+response = {"type"="array", "items"="int"}
+doc = "Get the integration time limits in microseconds."
+
+[properties]
+
+[properties.integration_time]
+getter = "get_integration_time_micros"
+setter = "set_integration_time_micros"
+units_getter = "get_integration_time_units"
+limits_getter = "get_integration_time_limits"
+type = "int"
+control_kind = "normal"
+record_kind = "metadata"
