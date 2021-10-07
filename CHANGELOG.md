@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [2021.10.0]
+
 ### Changed
 - Convert `integration_time` field to updated [YEP-111](https://yeps.yaq.fyi/111) property
 
@@ -56,7 +58,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 ### Added
 - initial release
 
-[Unreleased]: https://gitlab.com/yaq/yaqd-seabreeze/-/compare/v2021.3.2...master
+[Unreleased]: https://gitlab.com/yaq/yaqd-seabreeze/-/compare/v2021.10.0...master
+[2021.10.0]: https://gitlab.com/yaq/yaqd-seabreeze/-/compare/v2021.3.2...v2021.10.0
 [2021.3.2]: https://gitlab.com/yaq/yaqd-seabreeze/-/compare/v2021.3.1...v2021.3.2
 [2021.3.1]: https://gitlab.com/yaq/yaqd-seabreeze/-/compare/v2021.3.0...v2021.3.1
 [2021.3.0]: https://gitlab.com/yaq/yaqd-seabreeze/-/compare/v2021.2.0...v2021.3.0
