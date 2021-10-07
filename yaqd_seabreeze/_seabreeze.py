@@ -1,7 +1,7 @@
 __all__ = ["Seabreeze"]
 
 import asyncio
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Tuple
 
 from seabreeze.spectrometers import Spectrometer  # type: ignore
 from yaqd_core import HasMapping, HasMeasureTrigger, IsSensor, IsDaemon
@@ -42,3 +42,9 @@ class Seabreeze(HasMapping, HasMeasureTrigger, IsSensor, IsDaemon):
     def get_integration_time_micros(self) -> int:
         """Get the integration time in microseconds"""
         return self._state["integration_time_micros"]
+
+    def get_integration_time_units(self) -> str:
+        return "us"
+
+    def get_integration_time_limits(self) -> Tuple[int, int]:
+        return self.spec.integration_time_micros_limits

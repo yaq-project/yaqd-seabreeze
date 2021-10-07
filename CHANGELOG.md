@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Changed
+- Convert `integration_time` field to updated [YEP-111](https://yeps.yaq.fyi/111) property
+
+### Added
+- Add messages for units and limits on integration time
+
 ## [2021.3.2]
 
 ### Changed
