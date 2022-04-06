@@ -19,10 +19,11 @@ class Seabreeze(HasMapping, HasMeasureTrigger, IsSensor, IsDaemon):
         self._correct_nonlinearity = config.get("correct_nonlinearity", False)
 
         self._channel_names = ["intensities"]
-        self._channel_units = {"wavelengths": "nm", "intensities": None}
-        self._channel_shapes = {"wavelengths": (self.spec.pixels,)}
+        self._channel_units = {"intensities": None}
+        self._channel_shapes = {"intensities": (self.spec.pixels,)}
         self._channel_mappings = {"intensities": ["wavelengths"]}
         self._mappings["wavelengths"] = self.spec.wavelengths()
+        self._mapping_units = {"wavelengths": "nm"}
 
         if self._state["integration_time_micros"]:
             self.set_integration_time_micros(self._state["integration_time_micros"])
