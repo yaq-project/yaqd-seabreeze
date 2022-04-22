@@ -18,6 +18,8 @@ correct_dark_counts.default = false
 correct_nonlinearity.type = "boolean"
 correct_nonlinearity.default = false
 
+make.default = "Ocean Optics"
+
 [state]
 integration_time_micros.type = "int"
 integration_time_micros.default = 3000

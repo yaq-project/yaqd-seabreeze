@@ -46,7 +46,7 @@
             "type": "boolean"
         },
         "make": {
-            "default": null,
+            "default": "Ocean Optics",
             "origin": "is-daemon",
             "type": [
                 "null",
