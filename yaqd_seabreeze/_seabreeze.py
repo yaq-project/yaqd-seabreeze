@@ -14,6 +14,8 @@ class Seabreeze(HasMapping, HasMeasureTrigger, IsSensor, IsDaemon):
         self.spec = Spectrometer.from_serial_number(config.get("serial"))
 
         super().__init__(name, config, config_filepath)
+        self.serial = config["serial"] or self.spec.serial_number
+        self.model = config["model"] or self.spec.model
 
         self._correct_dark_counts = config.get("correct_dark_counts", False)
         self._correct_nonlinearity = config.get("correct_nonlinearity", False)
