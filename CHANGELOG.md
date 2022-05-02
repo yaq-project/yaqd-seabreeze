@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [2022.5.0]
+
+### Added
+- Default for make/model/serial
+
 ## [2022.4.0]
 
 ### Fixed
@@ -63,8 +68,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 ### Added
 - initial release
 
-[Unreleased]: https://gitlab.com/yaq/yaqd-seabreeze/-/compare/v2024.4.0...main
-[2021.10.0]: https://gitlab.com/yaq/yaqd-seabreeze/-/compare/v2021.10.0...v2022.4.0
+[Unreleased]: https://gitlab.com/yaq/yaqd-seabreeze/-/compare/v2024.5.0...main
+[2022.5.0]: https://gitlab.com/yaq/yaqd-seabreeze/-/compare/v2022.4.0...v2022.5.0
+[2022.4.0]: https://gitlab.com/yaq/yaqd-seabreeze/-/compare/v2021.10.0...v2022.4.0
 [2021.10.0]: https://gitlab.com/yaq/yaqd-seabreeze/-/compare/v2021.3.2...v2021.10.0
 [2021.3.2]: https://gitlab.com/yaq/yaqd-seabreeze/-/compare/v2021.3.1...v2021.3.2
 [2021.3.1]: https://gitlab.com/yaq/yaqd-seabreeze/-/compare/v2021.3.0...v2021.3.1
