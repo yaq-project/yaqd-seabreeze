@@ -12,3 +12,7 @@ A simple wrapper of the excelent [python-seabreeze package](https://github.com/a
 
 This package contains the following daemon(s):
 - [seabreeze](https://yaq.fyi/daemons/seabreeze/)
+
+
+## installation notes
+The seabreeze dependency is not always plug-and-play; after installing (through pip or conda), be sure to run the command `seabreeze_os_setup` to run os-dependent setup steps. For more details, see [seabreeze documentation](https://github.com/ap--/python-seabreeze/blob/master/os_support/readme.md).
