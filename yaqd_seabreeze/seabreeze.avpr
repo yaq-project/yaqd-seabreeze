@@ -86,9 +86,9 @@
         "conda-forge": "https://anaconda.org/conda-forge/yaqd-seabreeze"
     },
     "links": {
-        "bugtracker": "https://gitlab.com/yaq/yaqd-seabreeze/-/issues",
+        "bugtracker": "https://github.com/yaq-project/yaqd-seabreeze/issues",
         "manufacturer": "https://www.oceaninsight.com/products/spectrometers/",
-        "source": "https://gitlab.com/yaq/yaqd-seabreeze"
+        "source": "https://github.com/yaq-project/yaqd-seabreeze"
     },
     "messages": {
         "busy": {
