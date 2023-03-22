@@ -23,8 +23,8 @@ classifiers = [
 ]
 
 [tool.flit.metadata.urls]
-Source = "https://gitlab.com/yaq/yaqd-seabreeze"
-Issues = "https://gitlab.com/yaq/yaqd-seabreeze/issues"
+Source = "https://github.com/yaq-project/yaqd-seabreeze"
+Issues = "https://github.com/yaq-project/yaqd-seabreeze/issues"
 
 [tool.flit.metadata.requires-extra]
 dev = ["black", "pre-commit"]
