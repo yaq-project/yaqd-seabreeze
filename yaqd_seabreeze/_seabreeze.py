@@ -1,11 +1,13 @@
 __all__ = ["Seabreeze"]
 
 import asyncio
-from typing import Dict, Any, List, Tuple
+from __future__ import annotations
+# from typing import Dict, Any, List, Tuple
 
 from seabreeze.spectrometers import Spectrometer  # type: ignore
 from yaqd_core import HasMapping, HasMeasureTrigger, IsSensor, IsDaemon
 
+import numpy as np
 
 class Seabreeze(HasMapping, HasMeasureTrigger, IsSensor, IsDaemon):
     _kind = "seabreeze"
@@ -20,21 +22,34 @@ class Seabreeze(HasMapping, HasMeasureTrigger, IsSensor, IsDaemon):
         self._correct_dark_counts = config.get("correct_dark_counts", False)
         self._correct_nonlinearity = config.get("correct_nonlinearity", False)
 
-        self._channel_names = ["intensities"]
-        self._channel_units = {"intensities": None}
-        self._channel_shapes = {"intensities": (self.spec.pixels,)}
-        self._channel_mappings = {"intensities": ["wavelengths"]}
+        self._channel_names = ["mean", "std", "max", "min"]
+        self._channel_units = {"mean": None}
+        self._channel_shapes = {"mean": (self.spec.pixels,)}
+        self._channel_mappings = {"mean": ["wavelengths"]}
         self._mappings["wavelengths"] = self.spec.wavelengths()
         self._mapping_units = {"wavelengths": "nm"}
+        self._acquisition_limits = (1, 512)  # self-imposed limits
 
         if self._state["integration_time_micros"]:
             self.set_integration_time_micros(self._state["integration_time_micros"])
 
     async def _measure(self):
+        raw = []
+        for _ in range(self._state["acquisition_number"]):
+            raw.append(self.spec.intensities(
+                self._correct_dark_counts, self._correct_nonlinearity
+            ))
+            await asyncio.sleep(0.)
+        raw = np.array(raw)
         out = {}
-        out["intensities"] = self.spec.intensities(
-            self._correct_dark_counts, self._correct_nonlinearity
-        )
+        if self._state["acquisition_number"] == 1:
+            out["mean"] = out["min"] = out["max"] = raw[0]
+            out["std"] = np.full(raw.shape[1:], fill_value=0)
+        else:
+            out["mean"] = raw.mean(axis=0)
+            out["max"] = raw.max(axis=0)
+            out["min"] = raw.min(axis=0)
+            out["std"] = raw.std(axis=0)        
         return out
 
     def set_integration_time_micros(self, micros: int) -> None:
@@ -49,5 +64,17 @@ class Seabreeze(HasMapping, HasMeasureTrigger, IsSensor, IsDaemon):
     def get_integration_time_units(self) -> str:
         return "us"
 
-    def get_integration_time_limits(self) -> Tuple[int, int]:
+    def get_integration_time_limits(self) -> tuple[int, int]:
         return self.spec.integration_time_micros_limits
+    
+    def set_acquisitions(self, n:int):
+        self._state["acquisition_number"] = min(
+            max(self.acquisition_limits[0], n),
+            self._acquisiton_limits[1]
+        )
+
+    def get_acquisitions(self) -> int:
+        return self._state["acquisition_number"]
+    
+    def get_acquisition_limits(self) -> tuple[int, int]:
+        return self._acquisition_limits
