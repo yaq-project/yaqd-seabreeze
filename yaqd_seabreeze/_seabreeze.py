@@ -2,12 +2,14 @@ __all__ = ["Seabreeze"]
 
 import asyncio
 from __future__ import annotations
+
 # from typing import Dict, Any, List, Tuple
 
 from seabreeze.spectrometers import Spectrometer  # type: ignore
 from yaqd_core import HasMapping, HasMeasureTrigger, IsSensor, IsDaemon
 
 import numpy as np
+
 
 class Seabreeze(HasMapping, HasMeasureTrigger, IsSensor, IsDaemon):
     _kind = "seabreeze"
@@ -36,10 +38,10 @@ class Seabreeze(HasMapping, HasMeasureTrigger, IsSensor, IsDaemon):
     async def _measure(self):
         raw = []
         for _ in range(self._state["acquisition_number"]):
-            raw.append(self.spec.intensities(
-                self._correct_dark_counts, self._correct_nonlinearity
-            ))
-            await asyncio.sleep(0.)
+            raw.append(
+                self.spec.intensities(self._correct_dark_counts, self._correct_nonlinearity)
+            )
+            await asyncio.sleep(0.0)
         raw = np.array(raw)
         out = {}
         if self._state["acquisition_number"] == 1:
@@ -49,7 +51,7 @@ class Seabreeze(HasMapping, HasMeasureTrigger, IsSensor, IsDaemon):
             out["mean"] = raw.mean(axis=0)
             out["max"] = raw.max(axis=0)
             out["min"] = raw.min(axis=0)
-            out["std"] = raw.std(axis=0)        
+            out["std"] = raw.std(axis=0)
         return out
 
     def set_integration_time_micros(self, micros: int) -> None:
@@ -66,15 +68,14 @@ class Seabreeze(HasMapping, HasMeasureTrigger, IsSensor, IsDaemon):
 
     def get_integration_time_limits(self) -> tuple[int, int]:
         return self.spec.integration_time_micros_limits
-    
-    def set_acquisitions(self, n:int):
+
+    def set_acquisitions(self, n: int):
         self._state["acquisition_number"] = min(
-            max(self.acquisition_limits[0], n),
-            self._acquisiton_limits[1]
+            max(self.acquisition_limits[0], n), self._acquisiton_limits[1]
         )
 
     def get_acquisitions(self) -> int:
         return self._state["acquisition_number"]
-    
+
     def get_acquisition_limits(self) -> tuple[int, int]:
         return self._acquisition_limits
