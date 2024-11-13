@@ -69,7 +69,7 @@ class Seabreeze(HasMapping, HasMeasureTrigger, IsSensor, IsDaemon):
 
     def set_acquisitions(self, n: int):
         self._state["acquisition_number"] = min(
-            max(self._acquisition_limits[0], n), self._acquisiton_limits[1]
+            max(self._acquisition_limits[0], n), self._acquisition_limits[1]
         )
 
     def get_acquisitions(self) -> int:
