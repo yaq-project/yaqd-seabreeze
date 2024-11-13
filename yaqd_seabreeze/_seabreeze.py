@@ -23,9 +23,9 @@ class Seabreeze(HasMapping, HasMeasureTrigger, IsSensor, IsDaemon):
         self._correct_nonlinearity = config.get("correct_nonlinearity", False)
 
         self._channel_names = ["mean", "std", "max", "min"]
-        self._channel_units = {"mean": None}
-        self._channel_shapes = {"mean": (self.spec.pixels,)}
-        self._channel_mappings = {"mean": ["wavelengths"]}
+        self._channel_units = {k: None for k in self._channel_names}
+        self._channel_shapes = {k: (self.spec.pixels,) for k in self._channel_names}
+        self._channel_mappings = {k: ["wavelengths"] for k in self._channel_names}
         self._mappings["wavelengths"] = self.spec.wavelengths()
         self._mapping_units = {"wavelengths": "nm"}
         self._acquisition_limits = (1, 512)  # self-imposed limits
@@ -75,5 +75,5 @@ class Seabreeze(HasMapping, HasMeasureTrigger, IsSensor, IsDaemon):
     def get_acquisitions(self) -> int:
         return self._state["acquisition_number"]
 
-    def get_acquisition_limits(self) -> tuple[int, int]:
+    def get_acquisitions_limits(self) -> tuple[int, int]:
         return self._acquisition_limits

@@ -55,6 +55,10 @@ doc = "Set the number of acquisitions per measurement."
 response = "int"
 doc = "Get the number of acquisitions per measurement."
 
+[messages.get_acquisitions_limits]
+response = {"type"="array", "items"="int"}
+doc = "Get the limits for acquisitions per measurement."
+
 [properties]
 
 [properties.integration_time]
