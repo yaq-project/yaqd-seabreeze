@@ -1,14 +1,12 @@
+from __future__ import annotations
+
 __all__ = ["Seabreeze"]
 
 import asyncio
-from __future__ import annotations
-
-# from typing import Dict, Any, List, Tuple
+import numpy as np
 
 from seabreeze.spectrometers import Spectrometer  # type: ignore
 from yaqd_core import HasMapping, HasMeasureTrigger, IsSensor, IsDaemon
-
-import numpy as np
 
 
 class Seabreeze(HasMapping, HasMeasureTrigger, IsSensor, IsDaemon):
