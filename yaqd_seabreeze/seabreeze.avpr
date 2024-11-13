@@ -102,6 +102,14 @@
             "request": [],
             "response": "int"
         },
+        "get_acquisitions_limits": {
+            "doc": "Get the limits for acquisitions per measurement.",
+            "request": [],
+            "response": {
+                "items": "int",
+                "type": "array"
+            }
+        },
         "get_channel_mappings": {
             "doc": "Defines which mapping keys apply to which channel keys. Each channel may have zero or many mappings. Mappings must broadcast into corresponding channels.",
             "origin": "has-mapping",
