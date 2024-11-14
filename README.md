@@ -8,11 +8,11 @@
 [![log](https://img.shields.io/badge/change-log-informational)](https://github.com/yaq-project/yaqd-seabreeze/blob/main/CHANGELOG.md)
 
 yaq daemons for Ocean Optics SeaBreeze spectrometers.
-A simple wrapper of the excelent [python-seabreeze package](https://github.com/ap--/python-seabreeze).
+A simple wrapper of the excellent [python-seabreeze package](https://github.com/ap--/python-seabreeze).
 
 This package contains the following daemon(s):
 - [seabreeze](https://yaq.fyi/daemons/seabreeze/)
 
 
 ## installation notes
-The seabreeze dependency is not always plug-and-play; after installing (through pip or conda), be sure to run the command `seabreeze_os_setup` to run os-dependent setup steps. For more details, see [seabreeze documentation](https://github.com/ap--/python-seabreeze/blob/master/os_support/readme.md).
+The seabreeze dependency is not always plug-and-play; after installing (through pip or conda), be sure to run the command `seabreeze_os_setup` to run os-dependent setup steps. For more details, see [python-seabreeze documentation](https://github.com/ap--/python-seabreeze/blob/master/os_support/readme.md).

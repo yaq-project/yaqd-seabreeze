@@ -25,6 +25,10 @@ integration_time_micros.type = "int"
 integration_time_micros.default = 3000
 integration_time_micros.doc = "Integration time for collecting pixels"
 
+acquisition_number.type = "int"
+acquisition_number.default = 1
+acquisition_number.doc = "number of acquisitions to average"
+
 [messages]
 
 [messages.set_integration_time_micros]
@@ -43,6 +47,18 @@ doc = "Get units of integration time (us)"
 response = {"type"="array", "items"="int"}
 doc = "Get the integration time limits in microseconds."
 
+[messages.set_acquisitions]
+request = [{"name"="acquisitions", "type"="int"}]
+doc = "Set the number of acquisitions per measurement."
+
+[messages.get_acquisitions]
+response = "int"
+doc = "Get the number of acquisitions per measurement."
+
+[messages.get_acquisitions_limits]
+response = {"type"="array", "items"="int"}
+doc = "Get the limits for acquisitions per measurement."
+
 [properties]
 
 [properties.integration_time]
@@ -53,3 +69,11 @@ limits_getter = "get_integration_time_limits"
 type = "int"
 control_kind = "normal"
 record_kind = "metadata"
+
+[properties.acquisitions]
+getter = "get_acquisitions"
+setter = "set_acquisitions"
+type = "int"
+control_kind = "normal"
+record_kind = "metadata"
+
