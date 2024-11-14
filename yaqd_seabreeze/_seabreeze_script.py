@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-__all__ = ["SeabreezeChop"]
+__all__ = ["SeabreezeScript"]
 
 import asyncio
 import numpy as np
