@@ -35,9 +35,9 @@ class SeabreezeScript(HasMapping, HasMeasureTrigger, IsSensor, IsDaemon):
         else:
             raise ImportError(f"cannot find shots_processing in path {path}")
 
-        self._channel_names = self.processing_module._channel_names  # expected by parent
-        self._channel_units = self.processing_module._channel_units  # expected by parent
-        self._channel_mappings = self.processing_module._channel_units  # expected by parent
+        self._channel_names = self.processing_module.channel_names  # expected by parent
+        self._channel_units = self.processing_module.channel_units  # expected by parent
+        self._channel_mappings = self.processing_module.channel_units  # expected by parent
 
         self._channel_shapes = {k: (self.spec.pixels,) for k in self._channel_names}
         self._channel_mappings = {k: ["wavelengths"] for k in self._channel_names}
