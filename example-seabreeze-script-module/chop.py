@@ -14,7 +14,7 @@ channel_mappings = {k: "wavelength" for k in channel_names}
 
 # --- configure chopping --------------------------------------------------------------------------
 
-chop_index: int = 500  # index used to extract phase
+chop_index: int = 393  # index used to extract phase
 # TODO: index used to reference fluctuations (optional)
 reference_index = None
 # cutoff (raw counts that distinguish between on and off)
@@ -49,8 +49,8 @@ def process(raw: np.array) -> dict:
     # case chop_threshold
     chop = thresholder(raw)[:, None]
 
-    out["a"] = raw * chop / chop.sum()
-    out["b"] = raw * ~chop / (~chop).sum()
+    out["a"] = (raw * chop).sum(axis=0) / chop.sum()
+    out["b"] = (raw * ~chop).sum(axis=0) / (~chop).sum()
     out["d_ba"] = out["b"] - out["a"]
 
     return out
