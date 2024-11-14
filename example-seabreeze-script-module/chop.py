@@ -29,11 +29,11 @@ chop_threshold = "mean"
 sel = (slice(None), chop_index)
 ref = (slice(None), reference_index)
 if chop_threshold == "mean":
-    thresholder = lambda x: x < x[sel].mean()
+    thresholder = lambda x: x[sel] < x[sel].mean()
 elif chop_threshold == "extrema":
-    thresholder = lambda x: x < 0.5 * (x[sel].min() + x[sel].max())
+    thresholder = lambda x: x[sel] < 0.5 * (x[sel].min() + x[sel].max())
 elif chop_threshold in [int, float]:
-    thresholder = lambda x: x[:, chop_index] < chop_threshold
+    thresholder = lambda x: x[sel] < chop_threshold
 
 
 def process(raw: np.array) -> dict:
@@ -47,10 +47,10 @@ def process(raw: np.array) -> dict:
     out["mean"] = raw.mean(axis=0)
 
     # case chop_threshold
-    chop = thresholder(raw)
+    chop = thresholder(raw)[:, None]
 
-    out["a"] = raw * chop[None, :] / chop.sum()
-    out["b"] = raw * ~chop[None, :] / (~chop).sum()
+    out["a"] = raw * chop / chop.sum()
+    out["b"] = raw * ~chop / (~chop).sum()
     out["d_ba"] = out["b"] - out["a"]
 
     return out
