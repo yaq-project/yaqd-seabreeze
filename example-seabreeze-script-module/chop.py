@@ -1,16 +1,15 @@
 """
-seabreeze-script modules are similar to yaqd-ni-daqmx-tmux scripts, 
+seabreeze-script modules are similar to yaqd-ni-daqmx-tmux scripts,
 but one difference is that this script explicitly declares the channels
 and their properties
 """
-
 
 import numpy as np
 
 
 # -- configure chopping ---------------------------------------------------------------------------
 
-chop_index:int = 500  # index used to extract phase
+chop_index: int = 500  # index used to extract phase
 # cutoff (raw counts that distinguish between on and off)
 # use "mean" to dynamically extract phase with a mean cutoff
 # use "extrema" to dynamically extract phase halfway between min and max values
@@ -20,8 +19,8 @@ chop_threshold = "mean"
 # -------------------------------------------------------------------------------------------------
 
 channel_names = ["mean", "a", "b", "d_ba"]
-channel_units = {k:None for k in channel_names}
-channel_mappings = {k:"wavelength" for k in channel_names}
+channel_units = {k: None for k in channel_names}
+channel_mappings = {k: "wavelength" for k in channel_names}
 
 
 sel = (slice(None), chop_index)
@@ -33,7 +32,7 @@ elif chop_threshold in [int, float]:
     thresholder = lambda x: x[:, chop_index] < chop_threshold
 
 
-def process(raw:np.array) -> dict:
+def process(raw: np.array) -> dict:
     """
     take spectra and extract a chop phase by inspecting at a certain color.
     relies on measuring at some color some scatter that indicates chopper phase
@@ -46,7 +45,7 @@ def process(raw:np.array) -> dict:
     # case chop_threshold
     chop = thresholder(raw)
 
-    out["a"] = raw *  chop[None, :] /   chop.sum()
+    out["a"] = raw * chop[None, :] / chop.sum()
     out["b"] = raw * ~chop[None, :] / (~chop).sum()
     out["d_ba"] = out["b"] - out["a"]
 
