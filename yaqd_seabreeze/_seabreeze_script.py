@@ -5,7 +5,7 @@ __all__ = ["SeabreezeScript"]
 import asyncio
 import numpy as np
 import pathlib
-import importlib
+import importlib.util
 
 from seabreeze.spectrometers import Spectrometer  # type: ignore
 from yaqd_core import HasMapping, HasMeasureTrigger, IsSensor, IsDaemon
