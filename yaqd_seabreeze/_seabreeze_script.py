@@ -56,10 +56,7 @@ class SeabreezeScript(HasMapping, HasMeasureTrigger, IsSensor, IsDaemon):
                 self.spec.intensities(self._correct_dark_counts, self._correct_nonlinearity)
             )
             await asyncio.sleep(0.0)
-        out = self.processing_module.process(np.array(raw))
-        raw = np.array(raw)
-        out = {}
-        return out
+        return self.processing_module.process(np.array(raw))
 
     def set_integration_time_micros(self, micros: int) -> None:
         """Set the integration time in microseconds"""
