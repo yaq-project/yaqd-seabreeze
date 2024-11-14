@@ -16,7 +16,7 @@ channel_mappings = {k: "wavelength" for k in channel_names}
 
 chop_index: int = 500  # index used to extract phase
 # TODO: index used to reference fluctuations (optional)
-reference_index = None  
+reference_index = None
 # cutoff (raw counts that distinguish between on and off)
 # use "mean" to dynamically extract phase with a mean cutoff
 # use "extrema" to dynamically extract phase halfway between min and max values
