@@ -4,7 +4,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
+
 ### Added
+- `yaqd-seabreeze-script`: a daemon that allows scripts to pre-process spectra
 - new property `acquisitons`, which lets users control number of acquisitions
 - new statistical channels "min", "max", "std"
 
