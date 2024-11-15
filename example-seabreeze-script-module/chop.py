@@ -55,7 +55,7 @@ def process(raw: np.array) -> dict:
     if discriminator_index is not None:
         valid = discriminator(raw)
         raw = raw[valid]
-    
+
     out["mean"] = (raw).mean(axis=0)
 
     chop = thresholder(raw)
