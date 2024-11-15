@@ -58,7 +58,7 @@ def process(raw: np.array) -> dict:
     if discriminator_index is not None:
         valid = discriminator(raw)
         # TODO: make a channel to alert when discriminator fails
-        if valid.any():  # ignore discriminator when it fails?
+        if valid.any():
             raw = raw[valid]
 
     out["mean"] = (raw).mean(axis=0)
