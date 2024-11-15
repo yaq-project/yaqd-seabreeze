@@ -14,20 +14,27 @@ channel_mappings = {k: "wavelength" for k in channel_names}
 
 # --- configure chopping --------------------------------------------------------------------------
 
-chop_index: int = 393  # index used to extract phase
-# TODO: index used to reference fluctuations (optional)
-reference_index = None
+chop_index: int = 360  # index used to extract phase
+discriminator_index = 631  # discriminate spurious 2-shot acquisitions; use None to turn off
+discriminator_limits = [0.3, 1.7]  # signals larger than 1.7x median value are removed
+
 # cutoff (raw counts that distinguish between on and off)
 # use "mean" to dynamically extract phase with a mean cutoff
 # use "extrema" to dynamically extract phase halfway between min and max values
-# TODO: an extraction that works well with bimodal distribution
-chop_threshold = "mean"
+chop_threshold = "extrema"
 
 # -------------------------------------------------------------------------------------------------
 
 
 sel = (slice(None), chop_index)
-ref = (slice(None), reference_index)
+des = (slice(None), discriminator_index)
+
+
+def discriminator(x):
+    xdes = x[des] / np.median(x[des])
+    return (xdes > discriminator_limits[0]) & (xdes < discriminator_limits[1])
+
+
 if chop_threshold == "mean":
     thresholder = lambda x: x[sel] < x[sel].mean()
 elif chop_threshold == "extrema":
@@ -44,13 +51,17 @@ def process(raw: np.array) -> dict:
     e.g. use fastest acquisition time (3 ms), and 1/3 kHz rep rate on fs table
     """
     out = {}
-    out["mean"] = raw.mean(axis=0)
 
-    # case chop_threshold
-    chop = thresholder(raw)[:, None]
+    if discriminator_index is not None:
+        valid = discriminator(raw)
+        raw = raw[valid]
+    
+    out["mean"] = (raw).mean(axis=0)
 
-    out["a"] = (raw * chop).sum(axis=0) / chop.sum()
-    out["b"] = (raw * ~chop).sum(axis=0) / (~chop).sum()
+    chop = thresholder(raw)
+
+    out["a"] = raw[chop].mean(axis=0)
+    out["b"] = raw[~chop].mean(axis=0)
     out["d_ba"] = out["b"] - out["a"]
 
     return out
