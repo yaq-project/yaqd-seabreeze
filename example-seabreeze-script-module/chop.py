@@ -1,12 +1,11 @@
 """
 - take spectra and discern a chop phase by inspecting at a certain color.
 - relies on measuring, at some color, light that switches with chopper phase
-- aggregate blocked (a) and unblocked (b) phases acquisitions to measure 
+- aggregate blocked (a) and unblocked (b) phases acquisitions to measure
   a difference (b-a).
 - for proper extaction, we assume chopping phase is pure (i.e. one shot per spectrum).
   e.g. use fastest acquisition time (3 ms), and 1/3 kHz rep rate on fs table
 """
-
 
 import numpy as np
 
