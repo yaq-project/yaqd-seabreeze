@@ -1,12 +1,15 @@
 """
-take spectra and extract a chop phase by inspecting at a certain color.
-relies on measuring, at some color, light that switches with chopper phase
-for proper extaction, we assume chopping phase is pure (i.e. one shot per spectrum).
-e.g. use fastest acquisition time (3 ms), and 1/3 kHz rep rate on fs table
+- take spectra and discern a chop phase by inspecting at a certain color.
+- relies on measuring, at some color, light that switches with chopper phase
+- aggregate blocked (a) and unblocked (b) phases acquisitions to measure 
+  a difference (b-a).
+- for proper extaction, we assume chopping phase is pure (i.e. one shot per spectrum).
+  e.g. use fastest acquisition time (3 ms), and 1/3 kHz rep rate on fs table
 
 seabreeze-script modules are similar to yaqd-ni-daqmx-tmux scripts.
 one difference: these scripts explicitly declares the channels and some properties
 """
+
 
 import numpy as np
 
@@ -20,17 +23,14 @@ channel_mappings = {k: "wavelength" for k in channel_names}
 
 # --- --- discriminator ---------------------------------------------------------------------
 
-discriminator_index = 631  # discriminate spurious 2-shot acquisitions; use None to turn off
+# e.g. discriminate spurious 2-shot acquisitions
+discriminator_index = 631  # index used to discriminate spectra; use None to turn off
 discriminator_limits = [0.3, 1.7]  # signals larger than 1.7x median value are removed
 
 # --- --- chopping --------------------------------------------------------------------------
 
 chop_index: int = 360  # index used to extract phase
-
-# cutoff (raw counts that distinguish between on and off)
-# use "mean" to dynamically extract phase with a mean cutoff
-# use "extrema" to dynamically extract phase halfway between min and max values
-chop_threshold = "extrema"
+chop_threshold = "extrema"  # mean, extrema, or fixed count value
 
 # -------------------------------------------------------------------------------------------------
 
@@ -57,11 +57,10 @@ def process(raw: np.array) -> dict:
 
     if discriminator_index is not None:
         valid = discriminator(raw)
-        # TODO: make a channel to alert when discriminator fails
         if valid.any():
             raw = raw[valid]
 
-    out["mean"] = (raw).mean(axis=0)
+    out["mean"] = raw.mean(axis=0)
 
     chop = thresholder(raw)
 

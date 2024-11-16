@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-__all__ = ["SeabreezeScript"]
-
 import asyncio
 import numpy as np
 import pathlib
@@ -9,6 +7,9 @@ import importlib.util
 
 from seabreeze.spectrometers import Spectrometer  # type: ignore
 from yaqd_core import HasMapping, HasMeasureTrigger, IsSensor, IsDaemon
+
+
+__all__ = ["SeabreezeScript"]
 
 
 class SeabreezeScript(HasMapping, HasMeasureTrigger, IsSensor, IsDaemon):
@@ -35,14 +36,16 @@ class SeabreezeScript(HasMapping, HasMeasureTrigger, IsSensor, IsDaemon):
         else:
             raise ImportError(f"cannot find shots_processing in path {path}")
 
-        self._channel_names = self.processing_module.channel_names  # expected by parent
-        self._channel_units = self.processing_module.channel_units  # expected by parent
-        self._channel_mappings = self.processing_module.channel_units  # expected by parent
-
-        self._channel_shapes = {k: (self.spec.pixels,) for k in self._channel_names}
-        self._channel_mappings = {k: ["wavelengths"] for k in self._channel_names}
         self._mappings["wavelengths"] = self.spec.wavelengths()
         self._mapping_units = {"wavelengths": "nm"}
+
+        self._channel_names = self.processing_module.channel_names  # expected by parent
+        self._channel_units = self.processing_module.channel_units  # expected by parent
+        self._channel_mappings = self.processing_module.channel_mappings  # expected by parent
+        self._channel_shapes = {
+            k: (self.spec.pixels,) if self._channel_mappings[k]=="spec" else (1,)
+            for k, v in self.processing_module.channel_names
+        }
 
         self._acquisition_limits = (1, 1024)  # self-imposed limits
 
