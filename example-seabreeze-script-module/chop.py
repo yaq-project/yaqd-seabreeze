@@ -5,9 +5,6 @@
   a difference (b-a).
 - for proper extaction, we assume chopping phase is pure (i.e. one shot per spectrum).
   e.g. use fastest acquisition time (3 ms), and 1/3 kHz rep rate on fs table
-
-seabreeze-script modules are similar to yaqd-ni-daqmx-tmux scripts.
-one difference: these scripts explicitly declares the channels and some properties
 """
 
 

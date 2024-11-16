@@ -12,6 +12,7 @@ A simple wrapper of the excellent [python-seabreeze package](https://github.com/
 
 This package contains the following daemon(s):
 - [seabreeze](https://yaq.fyi/daemons/seabreeze/)
+- [seabreeze-script](https://yaq.fyi/daemons/seabreeze-script)
 
 
 ## installation notes
