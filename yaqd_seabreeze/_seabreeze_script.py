@@ -63,6 +63,7 @@ class SeabreezeScript(HasMapping, HasMeasureTrigger, IsSensor, IsDaemon):
             out = self.processing_module.process(np.array(raw))
         except Exception as e:
             self.logger.error(e)
+            out = {name: np.full(shape, np.nan) for name, shape in self._channel_shapes.items()}
         return out
 
     def set_integration_time_micros(self, micros: int) -> None:
