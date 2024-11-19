@@ -44,7 +44,7 @@ class SeabreezeScript(HasMapping, HasMeasureTrigger, IsSensor, IsDaemon):
         self._channel_mappings = self.processing_module.channel_mappings  # expected by parent
         self._channel_shapes = {
             k: (self.spec.pixels,) if self._channel_mappings[k] == "spec" else (1,)
-            for k, v in self.processing_module.channel_names
+            for k in self.processing_module.channel_names
         }
 
         self._acquisition_limits = (1, 1024)  # self-imposed limits
@@ -59,7 +59,11 @@ class SeabreezeScript(HasMapping, HasMeasureTrigger, IsSensor, IsDaemon):
                 self.spec.intensities(self._correct_dark_counts, self._correct_nonlinearity)
             )
             await asyncio.sleep(0.0)
-        return self.processing_module.process(np.array(raw))
+        try:
+            out = self.processing_module.process(np.array(raw))
+        except Exception as e:
+            self.logger.error(e)
+        return out
 
     def set_integration_time_micros(self, micros: int) -> None:
         """Set the integration time in microseconds"""
