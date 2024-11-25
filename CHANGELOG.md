@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [2024.11.0]
+
 ### Added
 - `yaqd-seabreeze-script`: a daemon that allows scripts to pre-process spectra
 - new property `acquisitons`, which lets users control number of acquisitions
@@ -79,7 +81,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/yaq-project/yaqd-seabreeze/compare/v2024.5.0...main
+[Unreleased]: https://github.com/yaq-project/yaqd-seabreeze/compare/v2024.11.0...main
+[2024.11.0]: https://github.com/yaq-project/yaqd-seabreeze/compare/v2022.5.0...v2024.11.0
 [2022.5.0]: https://github.com/yaq-project/yaqd-seabreeze/compare/v2022.4.0...v2022.5.0
 [2022.4.0]: https://github.com/yaq-project/yaqd-seabreeze/compare/v2021.10.0...v2022.4.0
 [2021.10.0]: https://github.com/yaq-project/yaqd-seabreeze/compare/v2021.3.2...v2021.10.0
