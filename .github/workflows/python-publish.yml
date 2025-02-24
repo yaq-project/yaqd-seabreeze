@@ -27,5 +27,4 @@ jobs:
         FLIT_USERNAME: ${{ secrets.PYPI_USERNAME }}
         FLIT_PASSWORD: ${{ secrets.PYPI_PASSWORD_YAQD_SEABREEZE }}
       run: |
-        cd yaqd-seabreeze
         flit publish
