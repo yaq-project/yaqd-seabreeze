@@ -23,7 +23,6 @@ jobs:
         python -m pip install --upgrade pip!=22.1.*
         pip install flit
     - name: Build and publish yaqd-seabreeze
-      if: startsWith( github.ref_name, 'yaqd-seabreeze')
       env:
         FLIT_USERNAME: ${{ secrets.PYPI_USERNAME }}
         FLIT_PASSWORD: ${{ secrets.PYPI_PASSWORD_YAQD_SEABREEZE }}
