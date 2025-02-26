@@ -27,6 +27,9 @@ classifiers = [
 ]
 dynamic = ["version"]
 
+[project.optional-dependencies]
+dev = ["black", "pre-commit"]
+
 [project.scripts]
 yaqd-seabreeze="yaqd_seabreeze._seabreeze:Seabreeze.main"
 yaqd-seabreeze-script="yaqd_seabreeze._seabreeze_script:SeabreezeScript.main"
@@ -35,9 +38,6 @@ yaqd-seabreeze-script="yaqd_seabreeze._seabreeze_script:SeabreezeScript.main"
 Homepage = "https://yaq.fyi"
 Source = "https://github.com/yaq-project/yaqd-seabreeze"
 Issues = "https://github.com/yaq-project/yaqd-seabreeze/issues"
-
-[tool.flit.metadata.requires-extra]
-dev = ["black", "pre-commit"]
 
 [tool.flit.module]
 name = "yaqd_seabreeze"
