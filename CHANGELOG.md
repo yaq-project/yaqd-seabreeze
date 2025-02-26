@@ -5,6 +5,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [2025.2.1]
+
+## Fixed
+- fix VERSION to correct calver format
+
+## [2025.2.0]
+
+### Fixed
+- repair publish workflow
+
 ## [2024.11.0]
 
 ### Added
@@ -81,7 +91,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/yaq-project/yaqd-seabreeze/compare/v2024.11.0...main
+[Unreleased]: https://github.com/yaq-project/yaqd-seabreeze/compare/v2025.2.1...main
+[2025.2.1]: https://github.com/yaq-project/yaqd-seabreeze/compare/v2025.2.0...v2025.2.1
+[2025.2.0]: https://github.com/yaq-project/yaqd-seabreeze/compare/v2024.11.0...v2025.2.0
 [2024.11.0]: https://github.com/yaq-project/yaqd-seabreeze/compare/v2022.5.0...v2024.11.0
 [2022.5.0]: https://github.com/yaq-project/yaqd-seabreeze/compare/v2022.4.0...v2022.5.0
 [2022.4.0]: https://github.com/yaq-project/yaqd-seabreeze/compare/v2021.10.0...v2022.4.0
