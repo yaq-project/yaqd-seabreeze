@@ -11,6 +11,7 @@ maintainers = [
   {name="yaq Developers"},
 ]
 readme = "README.md"
+description = "yaq daemons for Ocean Optics spectrometers"
 requires-python = ">=3.7"
 dependencies = ["yaqd-core>=2021.3.0", "seabreeze", "pyusb", "numpy"]
 classifiers = [
