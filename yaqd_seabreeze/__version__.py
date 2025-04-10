@@ -24,6 +24,6 @@ try:
 except:
     __branch__ = ""
 
-publishing = os.getenv("no_local_version") == "yaqd_seabreeze"
+publishing = os.getenv("publishing") == "yaqd_seabreeze"
 if __branch__ and not publishing:
     __version__ += "+" + __branch__

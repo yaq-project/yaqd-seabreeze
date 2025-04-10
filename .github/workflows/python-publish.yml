@@ -5,10 +5,10 @@ on:
     types: [created]
   push:
     branches:
-      - 'main'
+      - 'test_pypi'
 
 env:
-  no_local_version: yaqd_seabreeze
+  publishing: yaqd_seabreeze
 
 jobs:
   build:
