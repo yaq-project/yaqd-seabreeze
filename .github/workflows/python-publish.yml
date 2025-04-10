@@ -7,6 +7,9 @@ on:
     branches:
       - 'main'
 
+env:
+  no_local_version: yaqd_seabreeze
+
 jobs:
   build:
     name: Build distribution 📦
@@ -62,7 +65,7 @@ jobs:
 
   publish-to-testpypi:
     name: Publish Python 🐍 distribution 📦 to TestPyPI
-    if: github.ref_name == 'main'  # only publish to testpypi if testing is important
+    if: github.ref_name == 'test_pypi'  # only publish to testpypi if in a specific branch
     needs:
     - build
     runs-on: ubuntu-latest
