@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [2025.4.0]
+- update publish workflow
+
 ## [2025.2.1]
 
 ## Fixed
@@ -91,7 +94,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/yaq-project/yaqd-seabreeze/compare/v2025.2.1...main
+[Unreleased]: https://github.com/yaq-project/yaqd-seabreeze/compare/v2025.4.0...main
+[2025.4.0]: https://github.com/yaq-project/yaqd-seabreeze/compare/v2025.2.1...v2025.4.0
 [2025.2.1]: https://github.com/yaq-project/yaqd-seabreeze/compare/v2025.2.0...v2025.2.1
 [2025.2.0]: https://github.com/yaq-project/yaqd-seabreeze/compare/v2024.11.0...v2025.2.0
 [2024.11.0]: https://github.com/yaq-project/yaqd-seabreeze/compare/v2022.5.0...v2024.11.0
