@@ -43,7 +43,7 @@ class SeabreezeScript(HasMapping, HasMeasureTrigger, IsSensor, IsDaemon):
         self._channel_units = self.processing_module.channel_units  # expected by parent
         self._channel_mappings = self.processing_module.channel_mappings  # expected by parent
         self._channel_shapes = {
-            k: (self.spec.pixels,) if self._channel_mappings[k] == "spec" else (1,)
+            k: (self.spec.pixels,) if "wavelengths" in self._channel_mappings[k] else (1,)
             for k in self.processing_module.channel_names
         }
 

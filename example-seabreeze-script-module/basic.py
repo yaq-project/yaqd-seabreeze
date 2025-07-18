@@ -9,7 +9,7 @@ import numpy as np
 
 channel_names = ["mean", "std", "min", "max"]
 channel_units = {k: "counts" for k in channel_names}
-channel_mappings = {k: "wavelength" for k in channel_names}
+channel_mappings = {k: ["wavelengths"] for k in channel_names}
 
 # -------------------------------------------------------------------------------------------------
 
