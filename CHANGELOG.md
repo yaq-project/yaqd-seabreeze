@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+## Fixed
+- fix channel mappings issue where mapping type is not list, mapping key is incorrect
+
 ## [2025.4.0]
 - update publish workflow
 
