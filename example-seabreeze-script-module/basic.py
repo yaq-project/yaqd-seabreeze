@@ -1,5 +1,4 @@
-"""extract mean, std, min, and max of the acquisitions
-"""
+"""extract mean, std, min, and max of the acquisitions"""
 
 import numpy as np
 
