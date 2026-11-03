@@ -8,7 +8,6 @@ import importlib.util
 from seabreeze.spectrometers import Spectrometer  # type: ignore
 from yaqd_core import HasMapping, HasMeasureTrigger, IsSensor, IsDaemon
 
-
 __all__ = ["SeabreezeScript"]
 
 
